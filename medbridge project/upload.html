@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Medicinal Resources</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #004d99;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 80px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #004d99;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .upload-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #004d99;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .upload-button:hover {
+            background-color: #003366;
+        }
+
+        .back-button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #87cefa;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background-color: #003366;
+        }
+        
+
+        .extra-fields {
+            display: none;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 15px;
+            }
+
+            .upload-button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+        button{
+            width: 100%;
+            padding: 12px;
+            background-color: #004d99;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover{
+            background-color: #003366;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Upload Medicinal Resources</h1>
+        <a href="./index.html">Home</a>
+    </header>
+
+    <form id="uploadForm">
+        <label for="resourceType">Resource Type:</label>
+        <select id="resourceType">
+            <option value="select">--- select ---</option>
+            <option value="blood">Blood & Blood Components</option>
+            <option value="oxygen">Oxygen Cylinders</option>
+            <option value="organs">Organs</option>
+            <option value="equipment">Medical Equipment</option>
+            <option value="pharmaceuticals">Pharmaceuticals</option>
+        </select><br>
+        <label for="resourceDetails">Resource Details:</label>
+        <input type="text" id="resourceDetails" required><br>
+
+        <label for="hospitalName">Hospital Name:</label>
+        <input type="text" id="hospitalName" required><br>
+
+        <label for="hospitalLocation">Hospital Location:</label>
+        <input type="text" id="hospitalLocation" required><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" required><br>
+
+        <br>
+
+        <button type="submit">Upload Resource</button>
+    </form>
+
+    <script>
+        // Get the form and handle submission
+        document.getElementById('uploadForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const resourceType = document.getElementById('resourceType').value;
+            const hospitalName = document.getElementById('hospitalName').value;
+            const hospitalLocation = document.getElementById('hospitalLocation').value;
+            const quantity = document.getElementById('quantity').value;
+            const resourceDetails = document.getElementById('resourceDetails').value;
+
+            const resourceData = {
+                hospitalName,
+                hospitalLocation,
+                quantity,
+                resourceDetails,
+            };
+
+            // Save the uploaded resource to localStorage
+            let resources = JSON.parse(localStorage.getItem(resourceType)) || [];
+            resources.push(resourceData);
+            localStorage.setItem(resourceType, JSON.stringify(resources));
+
+            alert('Resource uploaded successfully!');
+            // Optionally clear the form
+            document.getElementById('uploadForm').reset();
+        });
+    </script>
+</body>
+</html>
