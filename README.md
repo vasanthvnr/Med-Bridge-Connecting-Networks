@@ -1,3 +1,5 @@
+The Direct Website Access Link : https://vasanthvnr.github.io/Med-Bridge-Connecting-Networks/medbridge%20project/login.html
+
 # Med-Bridge-Connecting-Networks-for-critical-insights
 
 In this project mainly focus to secur the patients quickly by connecting the hospitals and share the availability of the resources.
