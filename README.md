@@ -9,8 +9,4 @@ admin mail id is : vasanthvnr31@gmail.com
 after login to visit the resource page to get the hospital availability resources easily.
 The each government authorised hospital can have all permissions to access the website and recover the patients quickly and safely.
 
-#The source code for this complete website in one folder to download and access it
-
-
-username : admin
-password : admin123
+#The source code for this complete website in one folder to download and access it.
